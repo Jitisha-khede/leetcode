@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+//using bfs
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
@@ -43,3 +45,6 @@ public:
         return count;
     }
 };
+
+//using recursion
+
