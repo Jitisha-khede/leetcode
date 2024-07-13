@@ -24,3 +24,21 @@ public:
         return data;
     }
 };
+
+//using iterative
+
+class Solution {
+public:
+    TreeNode* data = NULL;
+    TreeNode* searchBST(TreeNode* root, int val) { 
+        while(root!=NULL && root->val!=val){
+            if(val<root->val){
+                root = root->left;
+            }
+            else{
+                root = root->right;
+            }
+        }
+        return root;
+    }
+};
