@@ -34,6 +34,4 @@ public:
        }
        return left;
     }
-
-
 };
