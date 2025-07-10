@@ -11,20 +11,34 @@
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-        ListNode* curr = head;
-        int count = 0;
-        if(head==NULL){
-            return head;
+
+        //BRUTE FORCE
+        // ListNode* curr = head;
+        // int count = 0;
+        // if(head==NULL){
+        //     return head;
+        // }
+        // while(curr != NULL){
+        //     count++;
+        //     curr = curr->next;
+        // }     
+        // count/=2;
+        // while(count){
+        //     head = head->next;
+        //     count--;
+        // }
+        // return head;
+
+        // if(head ==NULL || head->next==NULL) return head;
+        // if(head->next->next==NULL) return head->next;
+
+        //OPTIMAL
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast!=NULL && fast->next!=NULL){
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        while(curr != NULL){
-            count++;
-            curr = curr->next;
-        }     
-        count/=2;
-        while(count){
-            head = head->next;
-            count--;
-        }
-        return head;
+        return slow;
     }
 };
