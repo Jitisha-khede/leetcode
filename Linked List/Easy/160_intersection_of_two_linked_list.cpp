@@ -6,6 +6,8 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+//BRUTE FORCE
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
@@ -44,6 +46,31 @@ public:
             }
             ptrA= ptrA->next;
             ptrB= ptrB->next;
+        }
+        return NULL;
+    }
+};
+
+//OPTIMAL
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* dummy1 = headA;
+        ListNode* dummy2 = headB;
+        while(dummy1!=NULL || dummy2!=NULL){
+            if(dummy1==dummy2) return dummy1;
+
+            if(dummy1==NULL) {
+                dummy1 = headB;
+                continue;
+            }
+            if(dummy2==NULL){
+                dummy2 = headA;
+                continue;
+            }
+
+            dummy1=dummy1->next;
+            dummy2=dummy2->next;
         }
         return NULL;
     }
