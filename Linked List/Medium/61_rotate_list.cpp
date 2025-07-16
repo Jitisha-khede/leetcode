@@ -8,6 +8,7 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+//BRUTE FORCE
 class Solution {
 public:
 
@@ -40,5 +41,31 @@ public:
             end = head;
         }
         return head; 
+    }
+};
+//OPTIMAL
+class Solution {
+public:
+
+    ListNode* rotateRight(ListNode* head, int k) {
+        int c=1;
+        ListNode* ptr = head;
+        while(ptr!=NULL && ptr->next!=NULL){
+            ptr = ptr->next;
+            c++;
+        }
+        k%=c;
+        if(k==0) return head;
+        ListNode* curr=head;
+        int temp = c-k-1;
+        while(temp--){
+            curr = curr->next;
+        }
+
+        ptr->next = head;
+        head = curr->next;
+        curr->next = NULL;
+
+        return head;
     }
 };
