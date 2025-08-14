@@ -35,3 +35,20 @@ public:
         return vect;
     }
 };
+
+//RECURSION
+class Solution {
+public:
+    void preorder(TreeNode* node,int level, vector<int> &ans){
+        if(node==NULL) return;
+
+        if(ans.size()==level) ans.push_back(node->val);
+        preorder(node->right,level+1,ans);
+        preorder(node->left,level+1,ans);
+    }
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> ans;
+        preorder(root,0,ans);
+        return ans;
+    }
+};
