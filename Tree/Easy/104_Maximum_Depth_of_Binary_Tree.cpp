@@ -47,4 +47,19 @@ public:
 };
 
 //using recursion
-
+class Solution {
+public:
+    void depthCalc(int level,int &ans, TreeNode* node){
+        if(node==NULL){
+            ans = max(ans,level);
+            return;
+        }
+        depthCalc(level+1,ans,node->left);
+        depthCalc(level+1,ans,node->right);
+    }
+    int maxDepth(TreeNode* root) {
+        int ans = 0;
+        depthCalc(0,ans,root);
+        return ans; 
+    }
+};
